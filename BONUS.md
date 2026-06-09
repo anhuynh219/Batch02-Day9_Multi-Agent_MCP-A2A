@@ -1,8 +1,25 @@
-# Bài Tập Cộng Điểm — Latency của Stage 5 (A2A Multi-Agent)
+# Bài Tập Cộng Điểm — Stage 5 (A2A Multi-Agent)
 
-> Trả lời 2 câu hỏi trong `CODELAB.md` › *Bài Tập Cộng Điểm*:
-> 1. Latency (tổng thời gian trả lời 1 câu hỏi) là bao nhiêu giây?
-> 2. Đề xuất phương án giảm latency + demo + show thời gian đã giảm.
+> `CODELAB.md` › *Bài Tập Cộng Điểm* gồm 2 phần:
+> 1. **Viết file HTML demo tương tác của các Agent** (Stage 4 / Stage 5).
+> 2. Chạy full Stage 5, trả lời 2 câu hỏi: latency là bao nhiêu giây? + đề xuất & demo giảm latency.
+
+---
+
+## Phần 1 — HTML demo tương tác các Agent ✅
+
+File: **[demo_stage5.html](demo_stage5.html)** — mở trực tiếp bằng trình duyệt (self-contained,
+không cần server, không cần internet). Nội dung:
+
+- Sơ đồ 5 service (Registry / Customer / Law / Tax / Compliance) với cổng & delegation depth.
+- Nút **"Chạy demo"** animate **một request thật** (replay theo log + `trace_id` thật): gói tin
+  chạy dọc các cạnh, node sáng lên theo thứ tự xử lý, Tax ∥ Compliance chạy song song.
+- Panel **nhật ký tương tác** hiển thị từng bước (discover → A2A delegate → fan-out → aggregate).
+- Hiển thị **kết quả tổng hợp** và **biểu đồ so sánh latency** (baseline vs optimized) của Phần 2.
+
+---
+
+## Phần 2 — Latency: đo + tối ưu
 
 Mô hình dùng: `google/gemini-2.5-flash` (OpenRouter), `max_tokens=2048`.
 Câu hỏi test: *"If a company breaks a contract and avoids taxes, what are the legal and regulatory consequences?"*
